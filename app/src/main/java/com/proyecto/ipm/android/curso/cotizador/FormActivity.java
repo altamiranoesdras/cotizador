@@ -12,6 +12,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.proyecto.ipm.android.curso.cotizador.objetos.Cartera;
+import com.proyecto.ipm.android.curso.cotizador.objetos.Credito;
+
 public class FormActivity extends AppCompatActivity {
 
     /**
@@ -37,21 +40,25 @@ public class FormActivity extends AppCompatActivity {
     private int[] tazas;
 
     /**
-     * monto maximo operable
+     * monto maximo
      */
     private float montoMax;
     /**
-     * Monto solicitado ingresado
-     */
-    private float montoSol;
-    /**
-     * plazo maximo operable
+     * plazo maximo
      */
     private int plazoMax;
     /**
-     * Monto solicitado ingresado
+     * Monto solicitado ingresado, operable para el calculo
+     */
+    private float montoSol;
+    /**
+     * Monto solicitado ingresado, operable para el calculo
      */
     private int plazoSol;
+    /**
+     *Tasa operable para el calculo
+     */
+    private float tasa;
 
 
     /**
@@ -88,6 +95,9 @@ public class FormActivity extends AppCompatActivity {
      * Campo de texto del formulario para ingresar el numero de cuotas
      */
     private EditText editTextCuotas;
+
+
+    private Credito credito;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,16 +159,37 @@ public class FormActivity extends AppCompatActivity {
             return;
         }
 
+
+
         Intent intent = new Intent(this,ConfirmActivity.class);
+
+        Cartera cartera = new Cartera(spTipo.getSelectedItem().toString(),tasa,montoMax,plazoMax,tvReqCodeudor.getText().toString());
+        credito.setCategoria(spCategoria.getSelectedItem().toString());
+        credito.setCartera(cartera);
+        credito.setPlazo(plazoSol);
+        credito.setMontoSol(montoSol);
+        intent.putExtra("credito",credito);
+
         startActivityForResult(intent,6);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 6 && resultCode == RESULT_OK) {
+            if (data != null) {
+                Intent nuevaSolicitud= new Intent();
+                Credito envioCredito =data.getParcelableExtra("confirma");
+                nuevaSolicitud.putExtra("confirma",envioCredito);
+
+                setResult(RESULT_OK,nuevaSolicitud);
+                finish();
+            }
+        }
     }
 
     public void initComponents(){
+
+        credito = new Credito();
 
         //llena los arrays de textos y enteros a travez de valores en el archivo de strings
         categorias = getResources().getStringArray(R.array.categoria);
@@ -210,18 +241,22 @@ public class FormActivity extends AppCompatActivity {
                     case 0:
                         tvReqCodeudor.setText("NO");
                         tvTasa.setText("0 %");
+                        tasa=0;
                         break;
                     case 1:
                         tvReqCodeudor.setText("SI");
                         tvTasa.setText("14 %");
+                        tasa=14;
                         break;
                     case 2:
                         tvReqCodeudor.setText("NO");
                         tvTasa.setText("9 %");
+                        tasa=9;
                         break;
                     case 3:
                         tvReqCodeudor.setText("NO");
                         tvTasa.setText("9 %");
+                        tasa=9;
                         break;
 
                 }

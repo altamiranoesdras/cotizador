@@ -128,7 +128,8 @@
                     android:layout_marginRight="10dp"
                     android:background="@android:drawable/button_onoff_indicator_off"
                     android:textSize="18sp"
-                    android:textColor="@color/black_overlay" />
+                    android:textColor="@color/black_overlay"
+                    android:onClick="onClickNo" />
 
                 <Button
                     android:id="@+id/btnSi"
@@ -141,7 +142,8 @@
                     android:layout_marginRight="10dp"
                     android:background="@android:drawable/button_onoff_indicator_on"
                     android:textStyle="normal|bold"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:onClick="onClickSi" />
 
             </LinearLayout>
 
