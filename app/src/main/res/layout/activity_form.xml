@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_form"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.proyecto.ipm.android.curso.cotizador.FormActivity"
+    android:background="@android:color/background_light">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <TextView
+                android:text="Categoría"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView"
+                android:textColor="@color/black_overlay"
+                android:textSize="18sp"
+                android:textStyle="normal|bold" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="37dp"
+                android:id="@+id/spCategorias"
+                android:background="@android:drawable/spinner_dropdown_background" />
+
+            <TextView
+                android:text="Tipo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView2"
+                android:textColor="@color/black_overlay"
+                android:textSize="18sp"
+                android:textStyle="normal|bold"
+                android:layout_marginTop="10dp" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="37dp"
+                android:id="@+id/spTipos"
+                android:background="@android:drawable/spinner_dropdown_background"
+                android:layout_marginBottom="10dp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp">
+
+                <TextView
+                    android:text="Monto Maximo:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView3"
+                    android:layout_weight=".1"
+                    android:textColor="@color/black_overlay"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvMontoMax"
+                    android:padding="0dp"
+                    android:text="0.00"
+                    android:layout_weight="1"
+                    android:textSize="18sp"
+                    android:textStyle="normal|bold"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp">
+
+                <TextView
+                    android:text="Plazo maximo:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView4"
+                    android:layout_weight=".1"
+                    android:textColor="@color/black_overlay" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvPlazoMax"
+                    android:padding="0dp"
+                    android:text="0"
+                    android:layout_weight="1"
+                    android:textSize="18sp"
+                    android:textStyle="normal|bold"
+                    android:textColor="@android:color/background_dark" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="1"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp">
+
+                <TextView
+                    android:text="Requiere codeudor:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView7"
+                    android:layout_weight=".1" />
+
+                <TextView
+                    android:text="NO"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvReqCodeudor"
+                    android:layout_weight="1"
+                    android:textStyle="normal|bold"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/background_dark" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".1"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp">
+
+                <TextView
+                    android:text="Tasa interes: "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView8"
+                    android:layout_weight=".1" />
+
+                <TextView
+                    android:text="0 %"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvTasa"
+                    android:layout_weight="1"
+                    android:textStyle="normal|bold"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/background_dark" />
+
+            </LinearLayout>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:inputType="textPersonName|numberDecimal"
+                android:ems="10"
+                android:id="@+id/etMontoSol"
+                android:hint="Monto solicitado"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@android:drawable/editbox_background_normal"
+                android:padding="10dp"
+                android:layout_weight="0.23"
+                android:layout_height="50dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:id="@+id/etCuotas"
+                android:hint="Numero de cuotas"
+                android:background="@android:drawable/editbox_background_normal"
+                android:padding="10dp"
+                android:inputType="number" />
+
+            <Button
+                android:text="Cotizar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button"
+                android:onClick="cotizaConfirma"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@android:drawable/button_onoff_indicator_on" />
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

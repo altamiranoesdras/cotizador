@@ -1,0 +1,77 @@
+<resources>
+    <string name="app_name">Cotizador</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="title_activity_form">Nueva Cotización</string>
+    <string name="title_activity_confirm">Confirmación</string>
+
+    <string-array name="categoria">
+        <item>SELECCIONE UNA...</item>
+        <item>OFICIALES GENERALES</item>
+        <item>OFICIALES SUPERIORES</item>
+        <item>OFICIALES SUBALTERNOS</item>
+        <item>OFICIALES ASIMILADOS</item>
+        <item>ESPECIALISTAS</item>
+        <item>JUBILADOS / PENSIONADOS</item>
+    </string-array>
+
+    <string-array name="tipo_prestamo">
+        <item>SELECCIONE UNO...</item>
+        <item>FIDUCIARIO</item>
+        <item>VEHÍCULO</item>
+        <item>VIVIENDA</item>
+    </string-array>
+
+    <integer-array name="max_def">
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+    </integer-array>
+
+    <integer-array name="max_fiduciario">
+        <item>0</item>
+        <item>250000</item>
+        <item>150000</item>
+        <item>125000</item>
+        <item>100000</item>
+        <item>100000</item>
+        <item>100000</item>
+    </integer-array>
+
+    <integer-array name="max_vehiculos">
+        <item>0</item>
+        <item>250000</item>
+        <item>200000</item>
+        <item>175000</item>
+        <item>150000</item>
+        <item>150000</item>
+        <item>150000</item>
+    </integer-array>
+
+    <integer-array name="max_vivienda">
+        <item>0</item>
+        <item>500000</item>
+        <item>500000</item>
+        <item>300000</item>
+        <item>300000</item>
+        <item>300000</item>
+        <item>300000</item>
+    </integer-array>
+
+    <integer-array name="max_plazo">
+        <item>0</item>
+        <item>60</item>
+        <item>60</item>
+        <item>240</item>
+    </integer-array>
+
+    <integer-array name="taza">
+        <item>14</item>
+        <item>9</item>
+        <item>9</item>
+    </integer-array>
+
+</resources>
