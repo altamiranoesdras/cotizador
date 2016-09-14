@@ -34,11 +34,10 @@ public class ConfirmActivity extends AppCompatActivity {
         float tazaMensual=((Float.parseFloat(String.valueOf(credito.getCartera().getTaza()))/12)/100);
         float resultado= (float) (( tazaMensual * credito.getMontoSol() )  / ( 1 - ( Math.pow( 1 + tazaMensual , credito.getPlazo()*-1 )  )  ));
 
-        String valorCuota=String.format("%.2f",resultado);
 
         //Mostrando los datos del objeto crédito para la confirmación
         textViewTasa.setText(String.valueOf(credito.getCartera().getTaza())+" %");
-        textViewMontoCuota.setText("Q "+valorCuota);
+        textViewMontoCuota.setText("Q "+String.format("%.2f",resultado));
         textViewPlazo.setText(String.valueOf(credito.getPlazo()));
     }
 

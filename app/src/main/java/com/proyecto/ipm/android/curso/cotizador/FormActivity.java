@@ -177,11 +177,11 @@ public class FormActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 6 && resultCode == RESULT_OK) {
             if (data != null) {
-                Intent nuevaSolicitud= new Intent();
-                Credito envioCredito =data.getParcelableExtra("confirma");
-                nuevaSolicitud.putExtra("confirma",envioCredito);
+                Intent intent= new Intent();
+                Credito credito =data.getParcelableExtra("confirma");
+                intent.putExtra("agrega",credito);
 
-                setResult(RESULT_OK,nuevaSolicitud);
+                setResult(RESULT_OK,intent);
                 finish();
             }
         }

@@ -9,6 +9,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.proyecto.ipm.android.curso.cotizador.objetos.Credito;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,6 +32,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent,5);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 5 && resultCode == RESULT_OK) {
+            if (data != null) {
+                Credito credito=data.getParcelableExtra("agrega");
+                Toast.makeText(this,credito.getCartera().getNombre(),Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
     @Override
