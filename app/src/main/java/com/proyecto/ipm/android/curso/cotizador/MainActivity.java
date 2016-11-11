@@ -9,11 +9,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import com.proyecto.ipm.android.curso.cotizador.db.CotizaTableManager;
 import com.proyecto.ipm.android.curso.cotizador.objetos.Credito;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+
+    private ListView lvConvertion;
+    private ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +41,22 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent,5);
             }
         });
+
+        initComponents();
+    }
+
+    private void  initComponents(){
+        lvConvertion = (ListView) findViewById(R.id.lv_cotiz);
+
+        final List<Credito> convertionList= CotizaTableManager.getCreditos(this);
+        final List<String> convertionArray = new ArrayList<>();
+
+        for(int i=0;i< convertionList.size(); i++){
+            convertionArray.add(convertionList.get(i).getCategoria()+", \n"+convertionList.get(i).getCartera().getNombre());
+        }
+
+        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,convertionArray);
+        lvConvertion.setAdapter(adapter);
     }
 
     @Override
@@ -39,7 +64,11 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == 5 && resultCode == RESULT_OK) {
             if (data != null) {
                 Credito credito=data.getParcelableExtra("agrega");
-                Toast.makeText(this,credito.getCartera().getNombre(),Toast.LENGTH_LONG).show();
+                String msjSave =data.getExtras().getString("msjsaved");
+                Toast.makeText(this, msjSave, Toast.LENGTH_LONG).show();
+
+                finish();
+                startActivity(getIntent());
             }
         }
     }

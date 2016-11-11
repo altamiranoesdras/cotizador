@@ -14,6 +14,11 @@ import lombok.Setter;
 
 public class Credito implements Parcelable {
 
+    @Getter @Setter
+    private int id;
+
+    @Getter @Setter
+    private int idxTipoOfi;
     /**
      * Nombre de la categoría seleccionada
      */
@@ -43,7 +48,9 @@ public class Credito implements Parcelable {
 
     public Credito() {}
 
-    public Credito(String categoria, Cartera cartera, float montoSol, int plazo, float montoCuota) {
+    public Credito(Integer id,Integer idxTipoOfi,String categoria, Cartera cartera, float montoSol, int plazo, float montoCuota) {
+        this.id = id;
+        this.idxTipoOfi = idxTipoOfi;
         this.categoria = categoria;
         this.cartera = cartera;
         this.montoSol = montoSol;
@@ -52,6 +59,8 @@ public class Credito implements Parcelable {
     }
 
     protected Credito(Parcel in) {
+        id = in.readInt();
+        idxTipoOfi = in.readInt();
         categoria = in.readString();
         cartera = (Cartera) in.readValue(Cartera.class.getClassLoader());
         montoSol = in.readFloat();
@@ -66,6 +75,8 @@ public class Credito implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeInt(idxTipoOfi);
         dest.writeString(categoria);
         dest.writeValue(cartera);
         dest.writeFloat(montoSol);

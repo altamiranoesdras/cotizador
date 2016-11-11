@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.proyecto.ipm.android.curso.cotizador.db.CotizaTableManager;
 import com.proyecto.ipm.android.curso.cotizador.objetos.Credito;
 
 import org.w3c.dom.Text;
@@ -48,7 +49,11 @@ public class ConfirmActivity extends AppCompatActivity {
     public void onClickSi(View view){
         Intent intent= new Intent();
         intent.putExtra("confirma",credito);
+        boolean save = CotizaTableManager.saveCredito(this,credito);
+        intent.putExtra("saved",save);
+
         setResult(RESULT_OK,intent);
+
         finish();
     }
 }

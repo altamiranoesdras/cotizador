@@ -13,6 +13,8 @@ import lombok.Setter;
 public class Cartera implements Parcelable {
 
     @Getter @Setter
+    private int id;
+    @Getter @Setter
     private String nombre;
     @Getter @Setter
     private float taza;
@@ -23,7 +25,10 @@ public class Cartera implements Parcelable {
     @Getter @Setter
     private String codeudor;
 
-    public Cartera(String nombre, float taza, float motoMax, int plazoMax, String codeudor) {
+    public Cartera(){}
+
+    public Cartera(Integer id,String nombre, float taza, float motoMax, int plazoMax, String codeudor) {
+        this.id = id;
         this.nombre = nombre;
         this.taza = taza;
         this.motoMax = motoMax;
@@ -32,6 +37,7 @@ public class Cartera implements Parcelable {
     }
 
     protected Cartera(Parcel in) {
+        id = in.readInt();
         nombre = in.readString();
         taza = in.readFloat();
         motoMax = in.readFloat();
@@ -46,6 +52,7 @@ public class Cartera implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
         dest.writeString(nombre);
         dest.writeFloat(taza);
         dest.writeFloat(motoMax);

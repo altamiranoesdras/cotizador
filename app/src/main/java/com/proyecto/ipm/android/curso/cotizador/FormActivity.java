@@ -159,18 +159,21 @@ public class FormActivity extends AppCompatActivity {
             return;
         }
 
-
-
         Intent intent = new Intent(this,ConfirmActivity.class);
 
-        Cartera cartera = new Cartera(spTipo.getSelectedItem().toString(),tasa,montoMax,plazoMax,tvReqCodeudor.getText().toString());
+
+        Cartera cartera = new Cartera(spTipo.getSelectedItemPosition(), spTipo.getSelectedItem().toString(),tasa,montoMax,plazoMax,tvReqCodeudor.getText().toString());
         credito.setCategoria(spCategoria.getSelectedItem().toString());
+        credito.setIdxTipoOfi(spCategoria.getSelectedItemPosition());
         credito.setCartera(cartera);
         credito.setPlazo(plazoSol);
         credito.setMontoSol(montoSol);
         intent.putExtra("credito",credito);
 
+        //Toast.makeText(this,"Ir a confirm activity",Toast.LENGTH_LONG).show();*/
+
         startActivityForResult(intent,6);
+        //startActivity(intent);
     }
 
     @Override
@@ -179,7 +182,14 @@ public class FormActivity extends AppCompatActivity {
             if (data != null) {
                 Intent intent= new Intent();
                 Credito credito =data.getParcelableExtra("confirma");
+                Boolean saved= data.getBooleanExtra("saved",false);
                 intent.putExtra("agrega",credito);
+
+                if (saved) {
+                    intent.putExtra("msjsaved","Guardado");
+                }else{
+                    intent.putExtra("msjsaved","No Guardado");
+                }
 
                 setResult(RESULT_OK,intent);
                 finish();
